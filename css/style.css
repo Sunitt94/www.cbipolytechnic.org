@@ -1,0 +1,2167 @@
+:root {
+    --primary-yellow: #fcbe15;
+    --secondary-green: #009b50;
+    --dark-text: #212529;
+    --light-bg: #fdfdfd;
+    /* Background ko halka off-white rakhein */
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* --- Custom Professional CSS --- */
+
+
+
+/*-----------------topbar------------------*/
+/* --- Base Header Styling --- */
+.top-header-bar {
+    background: #009b50;
+    color: #ffffff;
+    padding: 8px 0;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 4px solid #fcbe15;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    /* Animation ke waqt horizontal scroll na aaye */
+}
+
+/* Social Media Icons */
+.social-link {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.social-link:hover {
+    background: #fcbe15;
+    color: #009b50;
+    transform: translateY(-4px) rotate(360deg);
+}
+
+/* Contact Details */
+.contact-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.contact-item i {
+    color: #fcbe15;
+    margin-right: 5px;
+}
+
+.contact-item:hover {
+    color: #fcbe15;
+}
+
+/* Colourful Email Animation */
+.email-colorful {
+    background: linear-gradient(45deg, #fcbe15, #ffffff, #fcbe15);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Navigation Buttons */
+.btn-nav {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+}
+
+.btn-nav:hover {
+    background: #fcbe15;
+    color: #009b50 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Admission Button with Blinker */
+.btn-admission {
+    background: #fcbe15;
+    color: #00008b;
+    /* darkblue */
+    padding: 7px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(252, 190, 21, 0.5);
+    animation: blinkerEffect 1s infinite alternate;
+    border: 2px solid #ffffff;
+    display: inline-block;
+}
+
+@keyframes blinkerEffect {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(252, 190, 21, 0.8);
+    }
+}
+
+/* ==========================================
+   NEW ANIMATION EFFECTS (Left, Right, Up, Down)
+   ========================================== */
+
+/* Keyframes Logic */
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes */
+.anim-left {
+    animation: slideFromLeft 1s ease-out forwards;
+}
+
+.anim-right {
+    animation: slideFromRight 1s ease-out forwards;
+}
+
+.anim-down {
+    animation: slideFromTop 1s ease-out forwards;
+}
+
+.anim-up {
+    animation: slideFromBottom 1s ease-out forwards;
+}
+
+/* Delay for smooth sequencing */
+.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.delay-2 {
+    animation-delay: 0.6s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .contact-item {
+        font-size: 11px;
+        margin-left: 5px;
+    }
+
+    .btn-nav {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}
+
+/*---------------top--end-------------------*/
+
+
+
+/*------------nav bar start -----------------------*/
+
+
+/* --- Base Layout --- */
+.nav-left-section {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    /* Entrance Animation Call */
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.nav-right-section {
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-logo {
+    max-height: 55px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: rotateY(360deg) scale(1.1);
+}
+
+/* --- 3D Dropdown Animation (Desktop) --- */
+@media (min-width: 992px) {
+    .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transform: perspective(1000px) rotateX(-20deg) translateY(20px);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: none;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-top: 4px solid #fcbe15;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        visibility: visible;
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0deg) translateY(0);
+    }
+}
+
+/* --- Modern Link Hover (Underline) --- */
+.nav-link {
+    position: relative;
+    font-weight: 700 !important;
+    color: #333 !important;
+    margin: 0 5px;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #009b50;
+    transform: translateX(-105%);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+/* --- Entrance Animation: Top to Down for Nav Items --- */
+@media (min-width: 992px) {
+    .navbar-nav .nav-item {
+        opacity: 0;
+        animation: slideInDown 0.8s ease-out forwards;
+    }
+
+    /* Staggered Delay: Ek-ek karke niche aayenge links */
+    .navbar-nav .nav-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .navbar-nav .nav-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .navbar-nav .nav-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .navbar-nav .nav-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .navbar-nav .nav-item:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .navbar-nav .nav-item:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .navbar-nav .nav-item:nth-child(7) {
+        animation-delay: 0.7s;
+    }
+}
+
+/* --- Keyframes --- */
+
+/* Logo: Left to Right */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Menu: Top to Down */
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Dropdown Item Hover Effect --- */
+.dropdown-item {
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+}
+
+.dropdown-item:hover {
+    background: #009b50 !important;
+    color: #fff !important;
+    padding-left: 30px;
+}
+
+/* --- Offcanvas & Mobile --- */
+.offcanvas {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(15px);
+    border-left: 8px solid #009b50;
+}
+
+.navbar-toggler {
+    border: 2px solid #009b50;
+}
+
+/*-------------------------------navbar---end----------------------------*/
+
+
+
+
+
+
+/*----------------marquee start -----------------*/
+:root {
+    --primary-y: #fcbe15;
+    /* Snehkul Yellow */
+    --secondary-g: #009b50;
+    /* Snehkul Green */
+}
+
+.snehkul-ultra-marquee {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    height: 42px;
+    width: 100%;
+    border-bottom: 3px solid var(--primary-y);
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 1. ✂️ Clip-Cut Label with SHINE Effect */
+.marquee-label-shine {
+    background: var(--primary-y);
+    color: var(--secondary-g);
+    padding: 0 35px 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 13px;
+    white-space: nowrap;
+    z-index: 20;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee-label-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: rotate(25deg);
+    animation: shine-loop 3s infinite;
+}
+
+/* 2. 🌫️ FADE-OUT EDGES Effect */
+.marquee-fade-window {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-fade-window::before,
+.marquee-fade-window::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.marquee-fade-window::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.marquee-fade-window::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+/* 3. 💓 PULSING BADGE Effect */
+.mq-pulse-dot {
+    background: var(--secondary-g);
+    color: white;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: bold;
+    animation: pulse-green 1.5s infinite;
+}
+
+.alert-bg {
+    background: #d9534f;
+}
+
+/* Red for Alert */
+
+/* 4. 🎞️ Smooth Infinite Animation */
+.marquee-track-main {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+    animation: marquee-scroll 28s linear infinite;
+}
+
+.mq-link-item {
+    text-decoration: none !important;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 40px;
+    transition: 0.3s;
+}
+
+.mq-link-item:hover {
+    color: var(--secondary-g);
+}
+
+.mq-divider {
+    color: var(--primary-y);
+    font-weight: bold;
+}
+
+/* 📽️ KEYFRAMES */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes shine-loop {
+    0% {
+        left: -100%;
+    }
+
+    30% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(0, 155, 80, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0);
+    }
+}
+
+/* Pause on Hover */
+.snehkul-ultra-marquee:hover .marquee-track-main {
+    animation-play-state: paused;
+}
+
+/*----------------marquee end -----------------*/
+
+
+/*-----------------slider start------------*/
+
+/* Slider Container */
+.hero-container {
+
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Equal Height Logic */
+.hero-slide-img {
+    height: 75vh;
+    /* Desktop Height - Hamesha equal rahegi */
+    min-height: 500px;
+    /* Isse chota nahi hoga */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Overlay for better text visibility */
+.hero-slide-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 40, 20, 0.7), transparent);
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 5;
+    /* Text overlay ke upar lane ke liye */
+}
+
+/* Glass Card - Compact & Professional */
+.glass-card-sm {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    border-radius: 20px;
+    max-width: 450px;
+    color: #fff;
+}
+
+.hero-title-sm {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.text-gold {
+    color: #fcbe15;
+}
+
+/* Responsive Adjustments (Mobile) */
+@media (max-width: 768px) {
+    .hero-slide-img {
+        height: 60vh;
+        /* Mobile par thoda chota */
+        min-height: 400px;
+    }
+
+    .glass-card-sm {
+        padding: 1.5rem;
+        margin: 0 15px;
+        /* Side spacing */
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-title-sm {
+        font-size: 1.8rem;
+    }
+
+    .hero-btns-sm {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-outline-sm {
+        margin-left: 0;
+    }
+}
+
+/*------------------------ banner videos css-----------------*/
+.hero-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    /* Video ko stretch nahi hone dega */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Video ko thoda dark karega taaki white text dikhe */
+    z-index: 1;
+}
+
+
+/*-----------------slider end------------*/
+
+
+
+
+/*-----------our program css code start-----------*/
+/* --- Global Styles --- */
+.department-section {
+    background: #f8f9fa;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background: #fcbe15;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+/* --- Card Main Style --- */
+.dept-card {
+    background: #ffffff;
+    padding: 25px 10px;
+    border-radius: 20px;
+    text-align: center;
+    border-bottom: 5px solid #009b50;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+
+    /* SMOOTH HOVER FIX: 
+       Transition timing aur cubic-bezier ko update kiya gaya hai */
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.5s ease,
+        border-color 0.4s ease;
+
+    /* Hardware acceleration for buttery smooth motion */
+    will-change: transform;
+}
+
+/* --- Premium Smooth Hover --- */
+.dept-card:hover {
+    transform: translateY(-15px);
+    /* Soft float up */
+    border-bottom-color: #fcbe15;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon Box Animation */
+.dept-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #009b50;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 12px;
+    margin: 0 auto 15px;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex-shrink: 0;
+}
+
+.dept-card:hover .dept-icon-box {
+    background: #fcbe15;
+    color: #009b50;
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* Title Styling */
+.dept-card h3 {
+    font-weight: 800;
+    color: #009b50;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.dept-card h3 span {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+    .dept-card {
+        padding: 45px 25px;
+    }
+
+    .dept-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .dept-icon-box {
+        width: 75px;
+        height: 75px;
+        font-size: 30px;
+    }
+}
+
+.dept-card p {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Button Styling */
+.btn-dept {
+    display: inline-block;
+    align-self: center;
+    margin-top: auto;
+    padding: 8px 20px;
+    background: #fcbe15;
+    color: #009b50;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.btn-dept:hover {
+    background: #009b50;
+    color: #fcbe15;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   PAGE LOAD ANIMATIONS (Fixed to allow smooth hover)
+   ========================================= */
+
+/* Main Card Fade-In (No Movement here to avoid Hard Hover) */
+.slide-fade-in {
+    opacity: 0;
+    animation: fadeInOnly 1.2s ease-out forwards;
+}
+
+@keyframes fadeInOnly {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Interior Elements (Subtle Cascade) */
+.anim-fade-top,
+.anim-fade-bottom,
+.anim-fade-left,
+.anim-fade-right {
+    opacity: 0;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.anim-fade-top {
+    animation-name: animIn;
+    animation-delay: 0.6s;
+}
+
+.anim-fade-left {
+    animation-name: animIn;
+    animation-delay: 0.7s;
+}
+
+.anim-fade-right {
+    animation-name: animIn;
+    animation-delay: 0.8s;
+}
+
+.anim-fade-bottom {
+    animation-name: animIn;
+    animation-delay: 0.9s;
+}
+
+@keyframes animIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered delay for cards */
+.row div:nth-child(2) .slide-fade-in {
+    animation-delay: 0.2s;
+}
+
+.row div:nth-child(3) .slide-fade-in {
+    animation-delay: 0.4s;
+}
+
+.row div:nth-child(4) .slide-fade-in {
+    animation-delay: 0.6s;
+}
+
+/* Mobile view fix */
+@media (max-width: 767px) {
+    .dept-card {
+        min-height: 250px;
+    }
+}
+
+/*-----------our program css code end-----------*/
+
+
+
+
+
+
+
+
+/*-----------------NOTIFICATION CARD LATEST UPDATES START------------*/
+
+
+
+/* Animations & Accents */
+.accent-bar {
+    width: 8px;
+    height: 45px;
+    background: var(--secondary-green);
+    margin-right: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 0 10px rgba(21, 115, 71, 0.3);
+}
+
+.text-yellow {
+    color: var(--primary-yellow);
+}
+
+.main-heading {
+    color: var(--secondary-green);
+    font-size: 2rem;
+}
+
+/* Custom Buttons */
+.btn-custom {
+    border: 2px solid var(--secondary-green);
+    color: var(--secondary-green);
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 8px 25px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-custom.active,
+.btn-custom:hover {
+    background: var(--secondary-green);
+    color: var(--primary-yellow) !important;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(21, 115, 71, 0.3);
+}
+
+/* Date Box Animation */
+.date-box {
+    background: var(--primary-yellow);
+    color: var(--secondary-green);
+    min-width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-weight: 800;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.news-item:hover .date-box {
+    background: var(--secondary-green);
+    color: var(--primary-yellow);
+    transform: rotate(-8deg) scale(1.1);
+}
+
+/* Notice Card Styling */
+.notice-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #eee;
+}
+
+.notice-header {
+    background: linear-gradient(45deg, var(--secondary-green), var(--secondary-green));
+    color: white;
+    padding: 20px;
+    border-bottom: 5px solid var(--primary-yellow);
+}
+
+.pulse-yellow {
+    background: var(--primary-yellow);
+    color: var(--secondary-green);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+.view-all-link {
+    color: var(--secondary-green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/*-----------------NOTIFICATION CARD LATEST UPDATES END------------*/
+
+
+
+
+
+/*------------------chairperson-message-section start-------------*/
+
+/* --- Root Colors --- */
+:root {
+    --cbip-yellow: #fcbe15;
+    --cbip-green: #009b50;
+    --cbip-dark: #222222;
+    --cbip-text-gray: #555555;
+}
+
+/* --- General Styling --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cbip-text-gray);
+    line-height: 1.8;
+}
+
+/* --- Section Styling --- */
+.chairperson-message-section {
+    background: linear-gradient(135deg, #ffffff 0%, #fdfdfd 100%);
+}
+
+/* --- Heading Styling --- */
+.sub-heading-text {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.main-heading-text {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.heading-line {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--cbip-yellow);
+    border-radius: 2px;
+}
+
+/* --- Message Content Card --- */
+.message-content-card {
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    border-left: 8px solid var(--cbip-green);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.message-content-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 155, 80, 0.15);
+    /* Green glow on hover */
+}
+
+.quote-icon-start,
+.quote-icon-end {
+    font-size: 4rem;
+    color: rgba(0, 155, 80, 0.08);
+    /* Faint Green Quote */
+    position: absolute;
+}
+
+.quote-icon-start {
+    top: 15px;
+    left: 15px;
+}
+
+.quote-icon-end {
+    bottom: 15px;
+    right: 15px;
+}
+
+.message-salutation {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cbip-dark);
+}
+
+.animated-message-body p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.highlight-green {
+    color: var(--cbip-green);
+    font-weight: 600;
+}
+
+/* --- Advanced Text Animation (Dynamic Color Looping) --- */
+/* Ye auto color change karta hai pure message body ka */
+@keyframes colorLoop {
+    0% {
+        color: var(--cbip-text-gray);
+    }
+
+    30% {
+        color: var(--cbip-dark);
+    }
+
+    50% {
+        color: var(--cbip-green);
+    }
+
+    /* Secondary Green */
+    70% {
+        color: var(--cbip-text-gray);
+    }
+
+    85% {
+        color: var(--cbip-yellow);
+    }
+
+    /* Primary Yellow - Faint usage for effect */
+    100% {
+        color: var(--cbip-text-gray);
+    }
+}
+
+#dynamic-color-text {
+    animation: colorLoop 15s infinite ease-in-out;
+}
+
+/* --- Typing Cursor Effect --- */
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--cbip-yellow);
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- Signature --- */
+.signature-block {
+    position: relative;
+    z-index: 10;
+}
+
+.signature-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.signature-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cbip-dark);
+}
+
+.signature-inst {
+    font-size: 0.9rem;
+}
+
+/* --- Chairperson Photo Advanced Effects --- */
+.chairperson-photo-wrapper {
+    padding: 15px;
+    z-index: 1;
+}
+
+.profile-img {
+    border: 8px solid #ffffff;
+    z-index: 10;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+.chairperson-photo-wrapper:hover .profile-img {
+    transform: scale(1.05);
+    /* Slight lift on hover */
+}
+
+/* Green rotating border effect */
+.photo-border-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px dashed var(--cbip-green);
+    animation: rotateBorder 20s linear infinite;
+    z-index: 5;
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Yellow Pulse effect behind the photo */
+.photo-pulse-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: var(--cbip-yellow);
+    opacity: 0;
+    animation: pulseGlow 4s infinite;
+    z-index: 2;
+}
+
+@keyframes pulseGlow {
+    0% {
+        width: 90%;
+        height: 90%;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 120%;
+        height: 120%;
+        opacity: 0;
+    }
+}
+
+
+
+
+/*---------------------------cbi-chairperson-message-section---------------*/
+
+
+
+/* --- Global CBI Theme --- */
+:root {
+    --cbi-green: #009b50;
+    --cbi-yellow: #fcbe15;
+    --cbi-dark: #222222;
+    --cbi-text-gray: #6c757d;
+}
+
+/* --- Section Global Styling --- */
+.cbi-chairperson-message-section {
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    /* Modern clean font */
+    overflow: visible;
+    /* Prevent scroll */
+}
+
+/* --- Content Column (Left Side) --- */
+.message-wrapper {
+    max-width: 95%;
+    /* Design space */
+}
+
+.cbi-chairperson-message-section h4 {
+    color: var(--cbi-dark);
+    font-size: 1.4rem;
+}
+
+/* --- Auto-Typing Cursor Effect --- */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--cbi-yellow);
+    margin-left: 3px;
+    animation: blink 0.7s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- Auto Color Change for Message Text --- */
+@keyframes colorLoop {
+    0% {
+        color: var(--cbi-text-gray);
+    }
+
+    30% {
+        color: var(--cbi-dark);
+    }
+
+    50% {
+        color: var(--cbi-green);
+    }
+
+    /* Transition to Green */
+    80% {
+        color: var(--cbi-text-gray);
+    }
+
+    90% {
+        color: var(--cbi-yellow);
+    }
+
+    /* Transition to Yellow (soft) */
+    100% {
+        color: var(--cbi-text-gray);
+    }
+}
+
+.cbi-chairperson-message-section .message-body p {
+    color: var(--cbi-text-gray);
+    /* Default initial color */
+    animation: colorLoop 20s infinite ease-in-out;
+    /* Smooth 20s cycle */
+    margin-bottom: 1rem;
+}
+
+/* --- Profile Column (Right Side) --- */
+.profile-container {
+    padding: 10px;
+    z-index: 1;
+}
+
+.profile-img {
+    border: 5px solid #ffffff;
+    /* Frame look */
+    z-index: 10;
+    position: relative;
+    border-radius: 4px;
+    /* Slight round like image_2.png */
+}
+
+/* --- Advanced: Color Shifting Rotating Ring --- */
+.color-shifting-border {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 106%;
+    height: 106%;
+    border-radius: 6px;
+    border-width: 4px;
+    border-style: solid;
+    animation: borderRotateColor 10s linear infinite;
+    /* Rotates AND changes color */
+    z-index: 5;
+    opacity: 0.8;
+}
+
+@keyframes borderRotateColor {
+    0% {
+        border-color: var(--cbi-green);
+        transform: rotate(0deg);
+    }
+
+    25% {
+        border-color: var(--cbi-yellow);
+        transform: rotate(90deg);
+    }
+
+    50% {
+        border-color: var(--cbi-green);
+        transform: rotate(180deg);
+    }
+
+    75% {
+        border-color: var(--cbi-yellow);
+        transform: rotate(270deg);
+    }
+
+    100% {
+        border-color: var(--cbi-green);
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover lift effect for photo */
+.profile-container:hover .profile-img {
+    transform: translateY(-8px);
+    transition: transform 0.4s ease;
+}
+
+/* --- Utility Classes --- */
+.text-justify {
+    text-align: justify;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 991px) {
+    .profile-img {
+        width: 180px !important;
+        height: 240px !important;
+    }
+
+    .profile-details {
+        text-align: center !important;
+    }
+}
+
+/* Header Styling */
+.message-header {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.header-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #009b50, #fcbe15);
+    margin: 10px auto 0;
+    border-radius: 2px;
+    animation: expandWidth 2s ease-in-out infinite alternate;
+}
+
+/* Underline Animation */
+@keyframes expandWidth {
+    from {
+        width: 40px;
+    }
+
+    to {
+        width: 120px;
+    }
+}
+
+/* Header Text Animation (Smooth color wave) */
+.section-title-box h2 {
+    animation: fadePulse 4s infinite ease-in-out;
+}
+
+@keyframes fadePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+/* Pehle wala CSS carry forward karein (colorLoop, typing-cursor etc.) */
+
+/* -----------------cbi-chairperson-message-section end------------------------------------------------ */
+
+
+
+
+
+/*------------career success section start ---------------*/
+
+/* Section Container */
+.success-section {
+    position: relative;
+    height: 400px;
+    background-color: #ffffff;
+    overflow: hidden;
+    /* Bahar ke cards chhupane ke liye */
+    display: flex;
+    align-items: center;
+}
+
+/* Left Content: Iska Z-index hamesha zyada hona chahiye */
+.left-content {
+    background-color: #fcbe15;
+    color: #000000;
+    height: 400px;
+    width: 40% !important;
+    display: flex;
+    align-items: center;
+    padding: 0 45px;
+    /* Is point ko dhyan se dekhein: 85% cut style ke liye */
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+
+    z-index: 100;
+    /* Isse cards hamesha iske PEECHE rahenge */
+    position: relative;
+}
+
+/* Typography & Animations */
+.main-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.highlight-text {
+    color: #009b50;
+    /* Secondary Green */
+    display: block;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    max-width: 320px;
+}
+
+.location-tag {
+    background: #009b50;
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Right Slider: Iska Z-index kam rahega */
+.right-slider {
+    height: 400px;
+    width: 65% !important;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+
+    /* Important: Slider ko thoda left shift karein overlap ke liye */
+    margin-left: -5%;
+    z-index: 5;
+    /* Yellow section (100) se kam */
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    gap: 25px;
+    padding-left: 25px;
+    /* Cards ab adha hi move karenge aur seamless loop banega */
+    animation: scrollLeft 20s linear infinite;
+    width: max-content;
+    /* Ensure track cards ke hisab se expand ho */
+}
+
+/* Cards ko thoda stylish banayein */
+.career-card {
+    min-width: 300px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* Shadow taaki overlay clear dikhe */
+    transition: transform 0.3s ease;
+}
+
+.career-card:hover {
+    transform: translateY(-8px);
+}
+
+.img-box {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #009b50;
+    color: #fff;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.card-footer-text {
+    background-color: #ffffff;
+    color: #000;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-top: 5px solid #009b50;
+    text-transform: uppercase;
+}
+
+.step-count {
+    color: #fcbe15;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Adhe track tak slide hote hi animation restart ho jayega bina dikhe */
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes growWidth {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 80px;
+    }
+}
+
+.animate-text {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.animate-text-delay {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.animate-grow {
+    width: 0;
+    height: 6px;
+    background: #009b50;
+    margin-top: 20px;
+    animation: growWidth 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+@media (max-width: 768px) {
+
+    /* Pure section ki height auto karein taaki text ke hisab se expand ho */
+    .success-section {
+        height: auto !important;
+        flex-direction: column !important;
+        margin: 15px 0 !important;
+        display: block !important;
+        /* Stack layout ke liye */
+    }
+
+    /* Yellow Section (Left Content) */
+    .left-content {
+        width: 100% !important;
+        height: auto !important;
+        /* Fixed height hata di */
+        padding: 40px 20px !important;
+        /* Proper spacing */
+        clip-path: none !important;
+        /* Cut hata diya taaki text space mile */
+        text-align: center !important;
+        display: block !important;
+    }
+
+    /* Heading ka size mobile ke liye perfect karein */
+    .main-heading {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+        border-left: none !important;
+        padding-left: 0 !important;
+    }
+
+    /* Text jo cut raha tha, uske liye ye zaroori hai */
+    .description {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        color: #000 !important;
+        max-width: 100% !important;
+        margin: 10px 0 !important;
+        overflow: visible !important;
+        /* Ensure text is not hidden */
+        display: block !important;
+    }
+
+    /* Slider area mobile par chota dikhega */
+    .right-slider {
+        width: 100% !important;
+        height: 300px !important;
+        margin-left: 0 !important;
+        padding: 15px 0 !important;
+        background-color: #f9f9f9 !important;
+    }
+
+    .career-card {
+        min-width: 220px !important;
+        margin: 0 10px !important;
+    }
+
+    .img-box {
+        height: 160px !important;
+    }
+}
+
+/*--------------------------career success section end -------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+/*--------------------student life section start ----------*/
+
+/* CSS Variables for requested colors */
+:root {
+    --primary: #fcbe15;
+    /* Yellow */
+    --secondary: #009b50;
+    /* Green */
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Syne', sans-serif;
+}
+
+/* Animations */
+@keyframes flyInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes flyInRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateDual {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-infra {
+    opacity: 0;
+    animation: flyInLeft 0.8s ease-out forwards;
+}
+
+.animate-sports {
+    opacity: 0;
+    animation: flyInRight 0.8s ease-out forwards;
+}
+
+/* Header */
+.hero-section {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.hero-section h1 {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary), var(--secondary));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.hero-description {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Split Layout */
+.split-container {
+    display: flex;
+    width: 100%;
+    padding: 30px 4%;
+    gap: 20px;
+}
+
+.section-box {
+    flex: 1;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 800;
+    border-left: 5px solid;
+    padding-left: 12px;
+}
+
+/* DUAL COLOR ANIMATED BORDER CARD */
+.dual-border-wrapper {
+    position: relative;
+    height: 220px;
+    border-radius: 15px;
+    padding: 3px;
+    overflow: hidden;
+    perspective: 1500px;
+    margin-bottom: 12px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Rotating Primary and Secondary border only */
+.dual-border-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(var(--secondary), var(--primary), var(--secondary), var(--primary), var(--secondary));
+    animation: rotateDual 4s linear infinite;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease;
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    background: white;
+    z-index: 1;
+}
+
+.dual-border-wrapper:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: #fff;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Slide Panel */
+.content-panel {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    transition: bottom 0.4s ease;
+    border-top: 2px solid var(--secondary);
+}
+
+.dual-border-wrapper:hover .content-panel {
+    bottom: 0;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.card-text {
+    font-size: 0.7rem;
+    color: #555;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Buttons */
+.btn-view {
+    padding: 6px 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #009b50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-view:hover {
+    border-radius: 50px;
+    background: #009b50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+    .split-container {
+        flex-direction: column;
+    }
+}
+
+
+
+/*---------------------------------------------END---------------------------------------*/
+
+
+
+
+/*------------WHY CHOOSE CBI SECTION STYLE START--------------------*/
+
+
+
+.why-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Animation like Video 3 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-reveal {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.sub-title {
+    color: #009b50;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.main-heading {
+    font-size: 38px;
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.highlight-yellow {
+    color: #fcbe15;
+}
+
+/* Video Container Styling */
+.video-wrapper {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    background: #000;
+    line-height: 0;
+    width: 100%;
+}
+
+.video-wrapper video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    /* Agar video ka aspect ratio maintain karna hai toh min-height hata sakte hain */
+    min-height: 350px;
+}
+
+/* Feature Card Grid */
+.feature-item {
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f1f1f1;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-item:hover {
+    border-color: #fcbe15;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.step-count {
+    font-size: 35px;
+    font-weight: 900;
+    color: rgba(0, 155, 80, 0.1);
+    margin-right: 20px;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+}
+
+.feature-content h5 {
+    color: #009b50;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.feature-content p {
+    color: #636e72;
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Delay for grid items animation */
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+@media (max-width: 991px) {
+    .main-heading {
+        font-size: 30px;
+    }
+
+    .video-wrapper {
+        margin-bottom: 40px;
+    }
+}
+
+/*------------WHY CHOOSE CBI SECTION STYLE START--------------------*/
