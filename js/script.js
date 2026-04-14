@@ -231,3 +231,181 @@ var swiper = new Swiper(".student-life-swiper", {
 
 
 //   -----------  student life section end-------------
+
+
+
+//--------------------success section script-----------
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sliderTrack = document.querySelector('.slider-track');
+
+    // Mouse le jane par sliding ruk jayegi
+    sliderTrack.addEventListener('mouseenter', () => {
+        sliderTrack.style.animationPlayState = 'paused';
+    });
+
+    // Mouse hatane par sliding firse start hogi
+    sliderTrack.addEventListener('mouseleave', () => {
+        sliderTrack.style.animationPlayState = 'running';
+    });
+
+    console.log("Success Section Ranchi - Final Version Initialized.");
+});
+
+//-----------------success section script end------------
+
+
+
+//------------------testimonial script start------------
+
+const testimonialSwiper = new Swiper('.testimonial-swiper', {
+    slidesPerView: 1,      // Ek baar mein ek hi slide dikhegi (1-by-1)
+    spaceBetween: 20,
+    loop: true,
+    speed: 1000,           // Sliding speed (smoothness)
+    centeredSlides: true,
+    autoplay: {
+        delay: 3000,       // 3 seconds pause
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2, // Tablet par 2
+            centeredSlides: false,
+        },
+        1024: {
+            slidesPerView: 3, // Desktop par 3 dikhenge par slide 1-by-1 hi honge
+            centeredSlides: false,
+        }
+    }
+});
+
+
+
+//----------------------testimonial end------------------
+
+
+
+
+//---------------------- scroll to top script-----------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    "use strict";
+
+    var progressPath = document.querySelector('#progress-wrap path');
+    var pathLength = progressPath.getTotalLength();
+
+    progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+    progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+    progressPath.style.strokeDashoffset = pathLength;
+    progressPath.getBoundingClientRect();
+    progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+
+    var updateProgress = function () {
+        var scroll = window.scrollY;
+        var height = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = pathLength - (scroll * pathLength / height);
+        progressPath.style.strokeDashoffset = progress;
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress);
+
+    var offset = 50;
+    var duration = 550;
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > offset) {
+            document.querySelector('#progress-wrap').classList.add('active-progress');
+        } else {
+            document.querySelector('#progress-wrap').classList.remove('active-progress');
+        }
+    });
+
+    document.querySelector('#progress-wrap').addEventListener('click', function (event) {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return false;
+    });
+});
+
+
+
+//----------------------end------------------
+
+
+
+//--------------------chatbot script-----------------
+
+
+const triggerContainer = document.getElementById('chatbot-trigger-container');
+const chatbotWindow = document.getElementById('cbiChatbot');
+const closeBtn = document.getElementById('closeChat');
+
+// Show/Hide Chat Window Logic
+document.getElementById('chatTrigger').addEventListener('click', () => {
+    chatbotWindow.classList.remove('d-none');
+    gsap.fromTo("#cbiChatbot",
+        { y: 50, scale: 0.8, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+    );
+    triggerContainer.style.visibility = 'hidden';
+});
+
+closeBtn.addEventListener('click', () => {
+    gsap.to("#cbiChatbot", {
+        y: 50, scale: 0.8, opacity: 0, duration: 0.4,
+        onComplete: () => {
+            chatbotWindow.classList.add('d-none');
+            triggerContainer.style.visibility = 'visible';
+        }
+    });
+});
+
+// WhatsApp Message Redirection
+function sendToWhatsApp() {
+    const name = document.getElementById('studentName').value;
+    const phone = document.getElementById('studentPhone').value;
+    const adminNumber = "917250211951"; // Official CBI Number
+
+    if (name.trim() === "" || phone.trim() === "") {
+        alert("Kripya details bharein!");
+        return;
+    }
+
+    const msg = `*New Admission Inquiry - CBI Polytechnic*%0A%0A` +
+        `*Student:* ${name}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Interested In:* Admission 2026-27 Session.%0A%0A` +
+        `_Sent via cbipolytechnic.org chatbot_`;
+
+    window.open(`https://wa.me/${adminNumber}?text=${msg}`, '_blank');
+}
+
+//------------------------chatbot script------------------
+
+
+
+
+//----------popop section script----------------------
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Popup fast open logic
+    if (!sessionStorage.getItem('cbiPopupShown')) {
+        var admissionModal = new bootstrap.Modal(document.getElementById('admissionPopup'));
+
+        // Website khulne ke 1 second baad popup aayega
+        setTimeout(function () {
+            admissionModal.show();
+            // User ko bar-bar refresh par na dikhe isliye session storage
+            sessionStorage.setItem('cbiPopupShown', 'true');
+        }, 1000);
+    }
+});
+
+//----------popop section script end----------------------
