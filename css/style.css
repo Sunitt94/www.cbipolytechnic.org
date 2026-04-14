@@ -237,6 +237,22 @@ body {
 
 /*------------nav bar start -----------------------*/
 
+.main-navbar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1050 !important;
+    /* Transformation hata dein jo animation se aa sakti hai */
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Ensure no parent blocks sticky 
+body, html {
+    overflow-x: visible !important;
+} */
 
 /* --- Base Layout --- */
 .nav-left-section {
@@ -2165,3 +2181,646 @@ img {
 }
 
 /*------------WHY CHOOSE CBI SECTION STYLE START--------------------*/
+
+
+/*-----------------------social card section--------------*/
+
+.mini-card {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    /* Thoda aur compact kiya */
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.3s ease;
+}
+
+/* Border Animation with Brand Colors #009b50 & #fcbe15 */
+.mini-card::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, transparent, #009b50, #fcbe15);
+    animation: rotateBorder 4s linear infinite;
+    z-index: -2;
+}
+
+@keyframes rotateBorder {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.mini-content {
+    position: absolute;
+    inset: 3px;
+    background: white;
+    border-radius: 12px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.mini-icon {
+    font-size: 30px;
+    /* Mobile friendly icon size */
+    margin-bottom: 5px;
+}
+
+.mini-content h4 {
+    color: #009b50;
+    font-size: 0.95rem;
+    /* Better fit for 2x2 grid */
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.mini-content p {
+    color: #777;
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.btn-sm-custom {
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 4px 15px;
+    background-color: #fcbe15;
+    color: #009b50;
+    border-radius: 20px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.btn-sm-custom:hover {
+    background-color: #009b50;
+    color: #fcbe15;
+}
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+    .mini-card {
+        height: 180px;
+        /* Mobile par height thodi kam */
+    }
+
+    .mini-content h4 {
+        font-size: 0.85rem;
+    }
+}
+
+/* --- Slide-In Keyframes --- */
+
+/* Left se slide hokar aana */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Right se slide hokar aana */
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Neeche se upar aana (Cards ke liye) */
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Animation Classes --- */
+
+.slide-left {
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.slide-right {
+    animation: slideInRight 1s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideInUp 1.2s ease-out forwards;
+}
+
+/* --- Existing Styles with minor tweaks --- */
+
+.main-heading {
+    color: #009b50;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+
+.heading-line {
+    width: 80px;
+    height: 4px;
+    background: #fcbe15;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.sub-heading {
+    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/*-----------------------------end--------------------*/
+
+/*--------------------Testimonial section css style------------------------*/
+
+
+/* Testimonial Enhanced Styles */
+.testi-card-premium {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px 25px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 155, 80, 0.08);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    height: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testi-gradient-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #009b50, #2ecc71);
+}
+
+.testi-card-premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 155, 80, 0.12);
+    border-color: #009b50;
+}
+
+.quote-mark {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+    color: #fcbe15;
+    opacity: 0.15;
+}
+
+.testi-desc {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.testi-user-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.testi-user-box img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fcbe15;
+    padding: 2px;
+}
+
+/* Float Animation */
+@keyframes textFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-text-pop {
+    display: inline-block;
+    animation: textFloat 4s ease-in-out infinite;
+}
+
+/* Swiper Dots */
+.swiper-pagination-bullet-active {
+    background: #009b50 !important;
+    width: 20px !important;
+    border-radius: 4px !important;
+}
+
+/*--------------------Testimonial end style--------------------------------*/
+
+
+/*-----------------------footer section------------*/
+
+/* --- Ultra-Modern Animated Footer (Option 1) --- */
+
+.footer-section {
+    background-color: #1a1a1a !important;
+    border-top: 5px solid #fcbe15 !important;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Floating Animation for Background (Optional) */
+.footer-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 155, 80, 0.05) 0%, transparent 70%);
+    animation: rotateBG 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateBG {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Heading Animation with Animated Line */
+.footer-section h5 {
+    color: #009b50 !important;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-section h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: #fcbe15;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-section:hover h5::after {
+    width: 80px;
+    /* Hover par line expand hogi */
+}
+
+/* World Best Link Animation: The Sliding Highlight */
+.footer-links a {
+    color: #b0b0b0 !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 2px 0;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: rgba(252, 190, 21, 0.1);
+    left: -5px;
+    bottom: 0;
+    z-index: -1;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.footer-links a:hover {
+    color: #fcbe15 !important;
+    padding-left: 10px;
+    transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+    width: calc(100% + 15px);
+}
+
+/* Social Icon: 3D Pop and Glow */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #252525 !important;
+    border: 1px solid #333 !important;
+    border-radius: 50% !important;
+    color: #fff !important;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 1;
+}
+
+.social-icon:hover {
+    background-color: #009b50 !important;
+    border-color: #009b50 !important;
+    color: #fff !important;
+    transform: translateY(-10px) rotate(360deg);
+    box-shadow: 0 10px 20px rgba(0, 155, 80, 0.4);
+}
+
+/* Contact Card: Glowing Glassmorphism */
+.contact-card {
+    background: rgba(37, 37, 37, 0.6) !important;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #fcbe15 !important;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-card:hover {
+    background: rgba(37, 37, 37, 0.9) !important;
+    transform: scale(1.02);
+    box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-card i {
+    color: #fcbe15 !important;
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 10px #fcbe15;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .footer-section {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-section h5::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-links a:hover {
+        padding-left: 0;
+        transform: translateY(-3px);
+    }
+
+    .contact-card {
+        text-align: left;
+    }
+}
+
+
+/*-----------------scroll to top section css-------------------*/
+
+
+/* --- Scroll To Top Button Styles --- */
+#progress-wrap {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 2px rgba(0, 155, 80, 0.2);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 400ms linear;
+    background-color: #fff;
+}
+
+#progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#progress-wrap::after {
+    position: absolute;
+    content: '';
+    /* Aapka font-awesome icon yahan display hoga */
+}
+
+.scroll-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #009b50;
+    /* Primary Green */
+    transition: all 300ms ease;
+}
+
+#progress-wrap:hover .scroll-icon {
+    color: #fcbe15;
+    /* Gold Color on Hover */
+    transform: translate(-50%, -80%);
+    /* Chota sa animation */
+}
+
+#progress-wrap .svg-content {
+    width: 100%;
+    height: 100%;
+}
+
+#progress-wrap svg path {
+    fill: none;
+    stroke: #fcbe15;
+    /* Progress bar color */
+    stroke-width: 4;
+    box-sizing: border-box;
+    transition: all 400ms linear;
+}
+
+
+
+/*---------chatbot section css-------------*/
+
+
+.chat-online-dot {
+    width: 10px;
+    height: 10px;
+    background: #ffc107;
+    border-radius: 50%;
+    border: 1px solid white;
+    animation: pulse-yellow 1.5s infinite;
+}
+
+@keyframes pulse-yellow {
+    0% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.3);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+}
+
+#chatTrigger:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+#chatBody::-webkit-scrollbar {
+    width: 5px;
+}
+
+#chatBody::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 10px;
+}
+
+
+/*----------chatbot section css--------------------*/
+
+
+
+/*-------------popop section css-----------------------*/
+
+
+/* Bottom-Left to Center Animation */
+#admissionPopup.modal.fade .modal-dialog {
+    /* Starting point: Bottom-Left corner and small scale */
+    transform: translate(-100%, 100%) scale(0) !important;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+#admissionPopup.modal.show .modal-dialog {
+    /* Ending point: Center and normal scale */
+    transform: translate(0, 0) scale(1) !important;
+}
+
+/* Modal Styling */
+.custom-popup-card {
+    border-radius: 30px !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3) !important;
+    border-left: 10px solid #fcbe15 !important;
+}
+
+/* Button Custom Styling */
+.btn-whatsapp-custom {
+    background: #009b50;
+    color: white !important;
+    font-weight: 700;
+    border-radius: 15px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp-custom:hover {
+    background: #007a3e;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 155, 80, 0.3);
+}
+
+/* Badge Pulse */
+.pulse-red {
+    animation: pulse-red-animation 2s infinite;
+}
+
+@keyframes pulse-red-animation {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+/*------------------popop section css end---------------*/
