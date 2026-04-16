@@ -1,25 +1,57 @@
-
-
-
-
+//-------------our program - smart slider--------
+document.addEventListener('DOMContentLoaded', function () {
+    new Swiper(".programSwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 0,
+        loop: true,
+        speed: 3000,
+        grabCursor: true,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        freeMode: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                speed: 800,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                freeMode: false,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                speed: 800,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                freeMode: false,
+            },
+        },
+        navigation: {
+            nextEl: ".programSwiper .swiper-button-next",
+            prevEl: ".programSwiper .swiper-button-prev",
+        },
+    });
+});
+//------------------end--------------
 //------------------Carousel fix start-----------------
 
 document.addEventListener('DOMContentLoaded', function () {
     var carousel = document.getElementById('heroCarousel');
     var bsCarousel = new bootstrap.Carousel(carousel, {
-        interval: 3000,   // 3 seconds
+        interval: 5000,   // 3 seconds
         ride: 'carousel', // auto-start
         wrap: true        // loop karta rahe
     });
 });
 
 //-----------------Carousel fix end------------------------
-
-
-
-
-
-
 
 
 
@@ -47,7 +79,7 @@ const newsData = {
 //-------------------------------------- PDF UPLOAD SECTION NOTIFICATION BOARD ----------------------------
 
 const notifications = [
-    { text: "Semester Examination Schedule April-May 202*", url: "assets/aicte/EOA Report 2026-27.PDF" },
+    { text: "Diploma 1st Semester Examination 2025", url: "assets/pdf/Examination program 11.04.2026/pdf&rendition=1.pdf" },
     { text: "Scholarship Form Submission Last Date: 15th April", url: "pdfs/scholarship_form.pdf" },
     { text: "Registration Open for Diploma Admission 2026", url: "admission-page.html" },
     { text: "Walk-in Interview for Lab Assistants (Civil & Mechanical)", url: "pdfs/lab_interview.pdf" },
@@ -81,7 +113,6 @@ function updateNews(category, btn) {
         container.appendChild(div);
     });
 }
-
 function loadNotifications() {
     const notifyContainer = document.getElementById('notification-list');
     notifyContainer.innerHTML = '';
@@ -91,8 +122,14 @@ function loadNotifications() {
         p.className = "mb-3 pb-2 border-bottom small d-flex align-items-start gap-2 animate__animated animate__fadeInRight";
         p.style.animationDelay = `${index * 0.1}s`;
 
-        // Using direct color #009b50 for the bullet point
-        p.innerHTML = `<span style="color: #009b50;">●</span> <a href="${note.url}" target="_blank" class="text-dark text-decoration-none">${note.text}</a>`;
+        // Yahan Red color aur NEW badge dono add kiye hain
+        p.innerHTML = `
+            <span style="color: #dc3545;">●</span> 
+            <a href="${note.url}" target="_blank" class="text-decoration-none fw-bold" style="color: #dc3545;">
+                ${note.text} 
+                <span class="badge bg-danger ms-1 animate__animated animate__flash animate__infinite" style="font-size: 0.6rem;">NEW</span>
+            </a>`;
+
         notifyContainer.appendChild(p);
     });
 }
