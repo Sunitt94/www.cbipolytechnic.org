@@ -4,19 +4,30 @@
     --dark-text: #212529;
     --light-bg: #fdfdfd;
     /* Background ko halka off-white rakhein */
+    --cbip-dark: #222222;
+    --cbip-text-gray: #555555;
+    --cbi-text-gray: #6c757d;
 }
 
+html,
 body {
+    margin: 0;
+    padding: 0;
     background-color: var(--light-bg);
     color: var(--dark-text);
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
+    line-height: 1.8;
+    /* overflow-x: visible !important;*/
 }
 
 
-/* --- Custom Professional CSS --- */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Syne', sans-serif;
+}
 
 
 
@@ -235,7 +246,173 @@ body {
 
 
 
-/*------------nav bar start -----------------------*/
+/*----------------marquee start -----------------*/
+
+
+.snehkul-ultra-marquee {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    height: 42px;
+    width: 100%;
+    border-bottom: 3px solid var(--primary-yellow);
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 1. ✂️ Clip-Cut Label with SHINE Effect */
+.marquee-label-shine {
+    background: var(--primary-yellow);
+    color: var(--secondary-green);
+    padding: 0 35px 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 13px;
+    white-space: nowrap;
+    z-index: 20;
+    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.marquee-label-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: rotate(25deg);
+    animation: shine-loop 3s infinite;
+}
+
+/* 2. 🌫️ FADE-OUT EDGES Effect */
+.marquee-fade-window {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-fade-window::before,
+.marquee-fade-window::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.marquee-fade-window::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.marquee-fade-window::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+/* 3. 💓 PULSING BADGE Effect */
+.mq-pulse-dot {
+    background: var(--secondary-green);
+    color: white;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: bold;
+    animation: pulse-green 1.5s infinite;
+}
+
+.alert-bg {
+    background: #d9534f;
+}
+
+/* Red for Alert */
+
+/* 4. 🎞️ Smooth Infinite Animation */
+.marquee-track-main {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+    animation: marquee-scroll 10s linear infinite;
+}
+
+.mq-link-item {
+    text-decoration: none !important;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 40px;
+    transition: 0.3s;
+}
+
+.mq-link-item:hover {
+    color: var(--secondary-green);
+}
+
+.mq-divider {
+    color: var(--primary-yellow);
+    font-weight: bold;
+}
+
+/* 📽️ KEYFRAMES */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes shine-loop {
+    0% {
+        left: -100%;
+    }
+
+    30% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(0, 155, 80, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0);
+    }
+}
+
+/* Pause on Hover */
+.snehkul-ultra-marquee:hover .marquee-track-main {
+    animation-play-state: paused;
+}
+
+/*----------------marquee end -----------------*/
+
+
+
+
+/*------------navbar start css -----------------------*/
 
 .main-navbar {
     position: -webkit-sticky !important;
@@ -256,7 +433,7 @@ body, html {
 
 /* --- Base Layout --- */
 .nav-left-section {
-    flex: 0 0 40%;
+    flex: 0 0 30%;
     display: flex;
     align-items: center;
     /* Entrance Animation Call */
@@ -264,7 +441,7 @@ body, html {
 }
 
 .nav-right-section {
-    flex: 0 0 60%;
+    flex: 0 0 70%;
     display: flex;
     justify-content: flex-end;
 }
@@ -272,6 +449,13 @@ body, html {
 .navbar-logo {
     max-height: 55px;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media(max-width:768px) {
+    .navbar-logo {
+        height: 50px !important;
+        width: auto;
+    }
 }
 
 .navbar-brand:hover .navbar-logo {
@@ -303,11 +487,13 @@ body, html {
 /* --- Modern Link Hover (Underline) --- */
 .nav-link {
     position: relative;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     color: #333 !important;
-    margin: 0 5px;
+    margin: 0 0px;
     overflow: hidden;
+
 }
+
 
 .nav-link::after {
     content: '';
@@ -413,180 +599,47 @@ body, html {
     border: 2px solid #009b50;
 }
 
+
+
+
+/* Offcanvas design tweaks */
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas-body .bg-light {
+    transition: transform 0.2s ease, background 0.2s ease;
+    position: relative;
+}
+
+.offcanvas-body .bg-light:hover {
+    background: #f0fdf4 !important;
+    /* Light green tint */
+    transform: scale(1.02);
+}
+
+.offcanvas-body .stretched-link::after {
+    z-index: 2;
+}
+
+/* Scrollbar ko sundar banane ke liye */
+.offcanvas-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.offcanvas-body::-webkit-scrollbar-thumb {
+    background: #009b50;
+    border-radius: 10px;
+}
+
+
 /*-------------------------------navbar---end----------------------------*/
 
 
 
 
 
-
-/*----------------marquee start -----------------*/
-:root {
-    --primary-y: #fcbe15;
-    /* Snehkul Yellow */
-    --secondary-g: #009b50;
-    /* Snehkul Green */
-}
-
-.snehkul-ultra-marquee {
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    height: 42px;
-    width: 100%;
-    border-bottom: 3px solid var(--primary-y);
-    overflow: hidden;
-    position: relative;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* 1. ✂️ Clip-Cut Label with SHINE Effect */
-.marquee-label-shine {
-    background: var(--primary-y);
-    color: var(--secondary-g);
-    padding: 0 35px 0 20px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 13px;
-    white-space: nowrap;
-    z-index: 20;
-    clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.marquee-label-shine::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 40%;
-    height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-    transform: rotate(25deg);
-    animation: shine-loop 3s infinite;
-}
-
-/* 2. 🌫️ FADE-OUT EDGES Effect */
-.marquee-fade-window {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-}
-
-.marquee-fade-window::before,
-.marquee-fade-window::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    z-index: 10;
-    pointer-events: none;
-}
-
-.marquee-fade-window::before {
-    left: 0;
-    background: linear-gradient(to right, white, transparent);
-}
-
-.marquee-fade-window::after {
-    right: 0;
-    background: linear-gradient(to left, white, transparent);
-}
-
-/* 3. 💓 PULSING BADGE Effect */
-.mq-pulse-dot {
-    background: var(--secondary-g);
-    color: white;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 10px;
-    font-weight: bold;
-    animation: pulse-green 1.5s infinite;
-}
-
-.alert-bg {
-    background: #d9534f;
-}
-
-/* Red for Alert */
-
-/* 4. 🎞️ Smooth Infinite Animation */
-.marquee-track-main {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    white-space: nowrap;
-    animation: marquee-scroll 28s linear infinite;
-}
-
-.mq-link-item {
-    text-decoration: none !important;
-    color: #333;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 0 40px;
-    transition: 0.3s;
-}
-
-.mq-link-item:hover {
-    color: var(--secondary-g);
-}
-
-.mq-divider {
-    color: var(--primary-y);
-    font-weight: bold;
-}
-
-/* 📽️ KEYFRAMES */
-@keyframes marquee-scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes shine-loop {
-    0% {
-        left: -100%;
-    }
-
-    30% {
-        left: 100%;
-    }
-
-    100% {
-        left: 100%;
-    }
-}
-
-@keyframes pulse-green {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0.7);
-    }
-
-    70% {
-        box-shadow: 0 0 0 6px rgba(0, 155, 80, 0);
-    }
-
-    100% {
-        box-shadow: 0 0 0 0 rgba(0, 155, 80, 0);
-    }
-}
-
-/* Pause on Hover */
-.snehkul-ultra-marquee:hover .marquee-track-main {
-    animation-play-state: paused;
-}
-
-/*----------------marquee end -----------------*/
 
 
 /*-----------------slider start------------*/
@@ -717,7 +770,7 @@ body, html {
 
 
 /*-----------our program css code start-----------*/
-/* --- Global Styles --- */
+
 .department-section {
     background: #f8f9fa;
     padding: 80px 0;
@@ -732,206 +785,213 @@ body, html {
     border-radius: 5px;
 }
 
-/* --- Card Main Style --- */
-.dept-card {
-    background: #ffffff;
-    padding: 25px 10px;
-    border-radius: 20px;
-    text-align: center;
-    border-bottom: 5px solid #009b50;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+/* Swiper slide centering */
+.programSwiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* Circular Card */
+.circle-card {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+}
+
+.circle-card:active {
+    cursor: grabbing;
+}
+
+/* Dual Rotating Border Lines */
+.circle-card::before,
+.circle-card::after {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    border-radius: 50%;
+}
+
+.circle-card::before {
+    background-image: conic-gradient(transparent, transparent, #fcbe15);
+    animation: rotateProg 4s linear infinite;
+}
+
+.circle-card::after {
+    background-image: conic-gradient(transparent, transparent, #009b50);
+    animation: rotateProg 4s linear infinite reverse;
+    animation-delay: -2s;
+}
+
+@keyframes rotateProg {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Inner Content with background image */
+.inner-content {
+    position: absolute;
+    inset: 7px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 5;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    position: relative;
-    cursor: pointer;
-
-    /* SMOOTH HOVER FIX: 
-       Transition timing aur cubic-bezier ko update kiya gaya hai */
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
-        box-shadow 0.5s ease,
-        border-color 0.4s ease;
-
-    /* Hardware acceleration for buttery smooth motion */
-    will-change: transform;
-}
-
-/* --- Premium Smooth Hover --- */
-.dept-card:hover {
-    transform: translateY(-15px);
-    /* Soft float up */
-    border-bottom-color: #fcbe15;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Icon Box Animation */
-.dept-icon-box {
-    width: 50px;
-    height: 50px;
-    background: #009b50;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 20px;
-    border-radius: 12px;
-    margin: 0 auto 15px;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    flex-shrink: 0;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    overflow: hidden;
 }
 
-.dept-card:hover .dept-icon-box {
-    background: #fcbe15;
-    color: #009b50;
-    transform: rotate(360deg) scale(1.1);
+/* Dark overlay for text readability */
+.inner-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+    border-radius: 50%;
 }
 
-/* Title Styling */
-.dept-card h3 {
+.inner-content h6 {
+    color: #ffffff;
+    font-size: 0.95rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     font-weight: 800;
-    color: #009b50;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
-    line-height: 1.2;
-    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
 }
 
-.dept-card h3 span {
-    display: block;
-    font-size: 0.75rem;
-    margin-top: 4px;
-}
-
-@media (min-width: 768px) {
-    .dept-card {
-        padding: 45px 25px;
-    }
-
-    .dept-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .dept-icon-box {
-        width: 75px;
-        height: 75px;
-        font-size: 30px;
-    }
-}
-
-.dept-card p {
-    font-size: 0.85rem;
-    color: #555;
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-
-/* Button Styling */
-.btn-dept {
-    display: inline-block;
-    align-self: center;
-    margin-top: auto;
-    padding: 8px 20px;
-    background: #fcbe15;
-    color: #009b50;
-    text-decoration: none;
+/* View Detail Button */
+.view-btn {
+    color: #fcbe15;
+    border: 2px solid #fcbe15;
     border-radius: 50px;
     font-weight: 700;
     font-size: 0.75rem;
-    transition: all 0.3s ease;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 8px;
 }
 
-.btn-dept:hover {
-    background: #009b50;
-    color: #fcbe15;
-    transform: scale(1.05);
+.view-btn:hover {
+    background-color: #fcbe15;
+    color: #009b50;
 }
 
-/* =========================================
-   PAGE LOAD ANIMATIONS (Fixed to allow smooth hover)
-   ========================================= */
-
-/* Main Card Fade-In (No Movement here to avoid Hard Hover) */
-.slide-fade-in {
-    opacity: 0;
-    animation: fadeInOnly 1.2s ease-out forwards;
+/* Navigation Arrows */
+.programSwiper .swiper-button-next,
+.programSwiper .swiper-button-prev {
+    color: #009b50;
+    background: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-@keyframes fadeInOnly {
-    from {
-        opacity: 0;
+.programSwiper .swiper-button-next::after,
+.programSwiper .swiper-button-prev::after {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .circle-card {
+        width: 155px;
+        height: 155px;
     }
 
-    to {
-        opacity: 1;
-    }
-}
-
-/* Interior Elements (Subtle Cascade) */
-.anim-fade-top,
-.anim-fade-bottom,
-.anim-fade-left,
-.anim-fade-right {
-    opacity: 0;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-}
-
-.anim-fade-top {
-    animation-name: animIn;
-    animation-delay: 0.6s;
-}
-
-.anim-fade-left {
-    animation-name: animIn;
-    animation-delay: 0.7s;
-}
-
-.anim-fade-right {
-    animation-name: animIn;
-    animation-delay: 0.8s;
-}
-
-.anim-fade-bottom {
-    animation-name: animIn;
-    animation-delay: 0.9s;
-}
-
-@keyframes animIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+    .inner-content h6 {
+        font-size: 0.7rem;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .view-btn {
+        font-size: 0.6rem;
+        padding: 3px 10px;
     }
 }
 
-/* Staggered delay for cards */
-.row div:nth-child(2) .slide-fade-in {
-    animation-delay: 0.2s;
-}
-
-.row div:nth-child(3) .slide-fade-in {
-    animation-delay: 0.4s;
-}
-
-.row div:nth-child(4) .slide-fade-in {
-    animation-delay: 0.6s;
-}
-
-/* Mobile view fix */
+/* Mobile: seamless ticker - no gap */
 @media (max-width: 767px) {
-    .dept-card {
-        min-height: 250px;
+    .programSwiper {
+        overflow: hidden;
+    }
+
+    .programSwiper .swiper-slide {
+        width: 170px !important;
+        padding: 15px 8px;
+    }
+
+    /* Hide nav arrows on mobile - auto ticker me zaroorat nahi */
+    .programSwiper .swiper-button-next,
+    .programSwiper .swiper-button-prev {
+        display: none;
+    }
+}
+
+/* Desktop: floating animation on cards */
+@media (min-width: 768px) {
+    .circle-card {
+        animation: floatCard 3s ease-in-out infinite;
+    }
+
+    /* Stagger the float for each slide */
+    .programSwiper .swiper-slide:nth-child(1) .circle-card {
+        animation-delay: 0s;
+    }
+
+    .programSwiper .swiper-slide:nth-child(2) .circle-card {
+        animation-delay: 0.4s;
+    }
+
+    .programSwiper .swiper-slide:nth-child(3) .circle-card {
+        animation-delay: 0.8s;
+    }
+
+    .programSwiper .swiper-slide:nth-child(4) .circle-card {
+        animation-delay: 1.2s;
+    }
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    50% {
+        transform: translateY(-12px);
+        box-shadow: 0 22px 40px rgba(0, 155, 80, 0.2);
     }
 }
 
 /*-----------our program css code end-----------*/
-
-
-
 
 
 
@@ -1045,7 +1105,7 @@ body, html {
 }
 
 
-/*-----------------NOTIFICATION CARD LATEST UPDATES END------------*/
+/*-----------------NOTIFICATION CARD & LATEST UPDATES END------------*/
 
 
 
@@ -1053,20 +1113,8 @@ body, html {
 
 /*------------------chairperson-message-section start-------------*/
 
-/* --- Root Colors --- */
-:root {
-    --cbip-yellow: #fcbe15;
-    --cbip-green: #009b50;
-    --cbip-dark: #222222;
-    --cbip-text-gray: #555555;
-}
 
-/* --- General Styling --- */
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--cbip-text-gray);
-    line-height: 1.8;
-}
+
 
 /* --- Section Styling --- */
 .chairperson-message-section {
@@ -1095,7 +1143,7 @@ body {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--cbip-yellow);
+    background-color: var(--primary-yellow);
     border-radius: 2px;
 }
 
@@ -1104,7 +1152,7 @@ body {
     background-color: #ffffff;
     border-radius: 25px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-    border-left: 8px solid var(--cbip-green);
+    border-left: 8px solid var(--secondary-green);
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -1145,7 +1193,7 @@ body {
 }
 
 .highlight-green {
-    color: var(--cbip-green);
+    color: var(--secondary-green);
     font-weight: 600;
 }
 
@@ -1161,7 +1209,7 @@ body {
     }
 
     50% {
-        color: var(--cbip-green);
+        color: var(--secondary-green);
     }
 
     /* Secondary Green */
@@ -1170,7 +1218,7 @@ body {
     }
 
     85% {
-        color: var(--cbip-yellow);
+        color: var(--primary-yellow);
     }
 
     /* Primary Yellow - Faint usage for effect */
@@ -1188,7 +1236,7 @@ body {
     display: inline-block;
     width: 3px;
     height: 1em;
-    background-color: var(--cbip-yellow);
+    background-color: var(--primary-yellow);
     margin-left: 5px;
     animation: blink 0.7s infinite;
     vertical-align: middle;
@@ -1253,7 +1301,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px dashed var(--cbip-green);
+    border: 3px dashed var(--secondary-green);
     animation: rotateBorder 20s linear infinite;
     z-index: 5;
 }
@@ -1277,7 +1325,7 @@ body {
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background-color: var(--cbip-yellow);
+    background-color: var(--primary-yellow);
     opacity: 0;
     animation: pulseGlow 4s infinite;
     z-index: 2;
@@ -1304,14 +1352,6 @@ body {
 
 
 
-/* --- Global CBI Theme --- */
-:root {
-    --cbi-green: #009b50;
-    --cbi-yellow: #fcbe15;
-    --cbi-dark: #222222;
-    --cbi-text-gray: #6c757d;
-}
-
 /* --- Section Global Styling --- */
 .cbi-chairperson-message-section {
     background: #ffffff;
@@ -1328,7 +1368,7 @@ body {
 }
 
 .cbi-chairperson-message-section h4 {
-    color: var(--cbi-dark);
+    color: var(--cbip-dark);
     font-size: 1.4rem;
 }
 
@@ -1337,7 +1377,7 @@ body {
     display: inline-block;
     width: 2px;
     height: 1.2em;
-    background-color: var(--cbi-yellow);
+    background-color: var(--primary-yellow);
     margin-left: 3px;
     animation: blink 0.7s infinite;
     vertical-align: middle;
@@ -1362,11 +1402,11 @@ body {
     }
 
     30% {
-        color: var(--cbi-dark);
+        color: var(--cbip-dark);
     }
 
     50% {
-        color: var(--cbi-green);
+        color: var(--secondary-green);
     }
 
     /* Transition to Green */
@@ -1375,7 +1415,7 @@ body {
     }
 
     90% {
-        color: var(--cbi-yellow);
+        color: var(--primary-yellow);
     }
 
     /* Transition to Yellow (soft) */
@@ -1407,48 +1447,6 @@ body {
     /* Slight round like image_2.png */
 }
 
-/* --- Advanced: Color Shifting Rotating Ring --- */
-.color-shifting-border {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 106%;
-    height: 106%;
-    border-radius: 6px;
-    border-width: 4px;
-    border-style: solid;
-    animation: borderRotateColor 10s linear infinite;
-    /* Rotates AND changes color */
-    z-index: 5;
-    opacity: 0.8;
-}
-
-@keyframes borderRotateColor {
-    0% {
-        border-color: var(--cbi-green);
-        transform: rotate(0deg);
-    }
-
-    25% {
-        border-color: var(--cbi-yellow);
-        transform: rotate(90deg);
-    }
-
-    50% {
-        border-color: var(--cbi-green);
-        transform: rotate(180deg);
-    }
-
-    75% {
-        border-color: var(--cbi-yellow);
-        transform: rotate(270deg);
-    }
-
-    100% {
-        border-color: var(--cbi-green);
-        transform: rotate(360deg);
-    }
-}
 
 /* Hover lift effect for photo */
 .profile-container:hover .profile-img {
@@ -1802,30 +1800,6 @@ body {
 
 /*--------------------student life section start ----------*/
 
-/* CSS Variables for requested colors */
-:root {
-    --primary: #fcbe15;
-    /* Yellow */
-    --secondary: #009b50;
-    /* Green */
-}
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    font-family: 'Inter', sans-serif;
-    color: #1a1a1a;
-    overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'Syne', sans-serif;
-}
 
 /* Animations */
 @keyframes flyInLeft {
@@ -1880,7 +1854,7 @@ h4 {
     text-transform: uppercase;
     font-weight: 800;
     margin-bottom: 5px;
-    background: linear-gradient(90deg, var(--secondary), var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--secondary-green), var(--primary-yellow), var(--secondary-green));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1942,7 +1916,7 @@ h4 {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: conic-gradient(var(--secondary), var(--primary), var(--secondary), var(--primary), var(--secondary));
+    background: conic-gradient(var(--secondary-green), var(--primary-yellow), var(--secondary-green), var(--primary-yellow), var(--secondary-green));
     animation: rotateDual 4s linear infinite;
 }
 
@@ -1992,7 +1966,7 @@ img {
     backdrop-filter: blur(5px);
     padding: 10px;
     transition: bottom 0.4s ease;
-    border-top: 2px solid var(--secondary);
+    border-top: 2px solid var(--secondary-green);
 }
 
 .dual-border-wrapper:hover .content-panel {
@@ -2003,7 +1977,7 @@ img {
     font-size: 0.95rem;
     margin-bottom: 2px;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--secondary-green);
 }
 
 .card-text {
